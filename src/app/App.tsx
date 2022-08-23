@@ -39,6 +39,7 @@ const useStyles = createUseStyles(
       height: '100%',
       width: '100%',
       display: 'flex',
+      color: 'black'
     },
     content: {
       flex: '1',
@@ -53,6 +54,9 @@ const useStyles = createUseStyles(
       bottom: 0,
       overflow: 'auto',
     },
+    input: {
+      color: 'black'
+    }
   },
   { name: 'App' }
 );
