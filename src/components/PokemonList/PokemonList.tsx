@@ -11,7 +11,7 @@ export const PokemonList = () => {
   if(!searchTerm){
       searchedPokemon = [...pokemons]
   }else{
-    searchedPokemon = pokemons.filter(p => p.name.toLowerCase().includes(searchTerm) === true)
+    searchedPokemon = pokemons.filter(p => p.name.toLowerCase().includes(searchTerm.toLowerCase()) === true)
   }
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export const PokemonList = () => {
       {loading && <div>Loading...</div>}
       <section>
         <h3>Choose your Pokemon!</h3>
-        <input className={classes.myInput} placeholder='Search Pokemon' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}/>
+        <input className={classes.myInput} placeholder='Search Pokemon' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
       </section>
       <div className={classes.pkmnDisplay}>
       {searchedPokemon.map((pkmn) => {

@@ -19,7 +19,7 @@ export type PokemonOption = {
   label: Pokemon['name'];
   number: Pokemon['number'];
   image: Pokemon['image'];
-  types: Pokemon['types']
+  types: Pokemon['types'];
 };
 
 export const GET_POKEMONS = gql`
