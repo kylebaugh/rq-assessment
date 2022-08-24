@@ -53,9 +53,6 @@ const useStyles = createUseStyles(
       right: 0,
       bottom: 0,
       overflow: 'auto',
-    },
-    input: {
-      color: 'black'
     }
   },
   { name: 'App' }

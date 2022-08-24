@@ -2,14 +2,16 @@ import { useMemo, useState, useEffect } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
+import { myStyles } from '../components';
 
+type PokemonType = keyof typeof myStyles;
 
 export type Pokemon = {
   id: string;
   name: string;
   number: number;
   image: string;
-  types: string
+  types: PokemonType[];
 };
 
 export type PokemonOption = {
