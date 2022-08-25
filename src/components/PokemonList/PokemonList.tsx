@@ -16,8 +16,7 @@ export const PokemonList = () => {
 
   useEffect(() => {
     console.log('Use effect triggered')
-    console.log(searchTerm)
-}, [searchTerm])
+}, [searchTerm, pokemons])
 
   return (
     <div className={classes.root}>
@@ -33,61 +32,28 @@ export const PokemonList = () => {
         <div key={pkmn.id} className={classes.pkmnCard}> 
           
           <section >
-            <img className={classes.pkImage} src={`${pkmn.image}`}/>
+            <img className={classes.pkImage} src={`${pkmn.image}` } alt={`${pkmn.name}`}/>
           </section>
 
           <section className={classes.cardBottom}>
-            <section>#{pkmn.number} - {pkmn.name}</section>
-            <section className={classes.types}>
-
-              {/* <section className={`${classes}.${type1}`}></section>
-              {pkmn.types[1] && <section className={`${classes}.${type2}`}></section>} */}
-
-              {/* tell interpreter that types is an array of keys of classes */}
-            
+            <section className={classes.nameNumber}>#{pkmn.number} - {pkmn.name}</section>
+            <section className={classes.types}>            
             
               {<section className={classes[pkmn.types[0]]}>{pkmn.types[0]}</section>}
               {pkmn.types[1] && <section className={classes[pkmn.types[1]]}>{pkmn.types[1]}</section>}
 
-              {/* {pkmn.types[0] === 'Fire' && <section className={classes.fire}>{pkmn.types[0]}</section>}
-              {pkmn.types[0] === 'Water' && <section className={classes.water}>{pkmn.types[0]}</section>}
-              {pkmn.types[0] === 'Grass' && <section className={classes.grass}>{pkmn.types[0]}</section>}
-              {pkmn.types[0] === 'Flying' && <section className={classes.flying}>{pkmn.types[0]}</section>}
-              {pkmn.types[0] === 'Fighting' && <section className={classes.fighting}>{pkmn.types[0]}</section>}
-              {pkmn.types[0] === 'Poison' && <section className={classes.poison}>{pkmn.types[0]}</section>}
-              {pkmn.types[0] === 'Electric' && <section className={classes.electric}>{pkmn.types[0]}</section>}
-              {pkmn.types[0] === 'Ground' && <section className={classes.ground}>{pkmn.types[0]}</section>}
-              {pkmn.types[0] === 'Rock' && <section className={classes.rock}>{pkmn.types[0]}</section>}
-              {pkmn.types[0] === 'Psychic' && <section className={classes.psychic}>{pkmn.types[0]}</section>}
-              {pkmn.types[0] === 'Ice' && <section className={classes.ice}>{pkmn.types[0]}</section>}
-              {pkmn.types[0] === 'Bug' && <section className={classes.bug}>{pkmn.types[0]}</section>}
-              {pkmn.types[0] === 'Ghost' && <section className={classes.ghost}>{pkmn.types[0]}</section>}
-              {pkmn.types[0] === 'Steel' && <section className={classes.steel}>{pkmn.types[0]}</section>}
-              {pkmn.types[0] === 'Dragon' && <section className={classes.dragon}>{pkmn.types[0]}</section>}
-              {pkmn.types[0] === 'Dark' && <section className={classes.dark}>{pkmn.types[0]}</section>}
-              {pkmn.types[0] === 'Fairy' && <section className={classes.fairy}>{pkmn.types[0]}</section>} */}
-
-              {/* {pkmn.types[1] === 'Normal' && <section className={classes.normal}>{pkmn.types[1]}</section>}
-              {pkmn.types[1] === 'Fire' && <section className={classes.fire}>{pkmn.types[1]}</section>}
-              {pkmn.types[1] === 'Water' && <section className={classes.water}>{pkmn.types[1]}</section>}
-              {pkmn.types[1] === 'Grass' && <section className={classes.grass}>{pkmn.types[1]}</section>}
-              {pkmn.types[1] === 'Flying' && <section className={classes.flying}>{pkmn.types[1]}</section>}
-              {pkmn.types[1] === 'Fighting' && <section className={classes.fighting}>{pkmn.types[1]}</section>}
-              {pkmn.types[1] === 'Poison' && <section className={classes.poison}>{pkmn.types[1]}</section>}
-              {pkmn.types[1] === 'Electric' && <section className={classes.electric}>{pkmn.types[1]}</section>}
-              {pkmn.types[1] === 'Ground' && <section className={classes.ground}>{pkmn.types[1]}</section>}
-              {pkmn.types[1] === 'Rock' && <section className={classes.rock}>{pkmn.types[1]}</section>}
-              {pkmn.types[1] === 'Psychic' && <section className={classes.psychic}>{pkmn.types[1]}</section>}
-              {pkmn.types[1] === 'Ice' && <section className={classes.ice}>{pkmn.types[1]}</section>}
-              {pkmn.types[1] === 'Bug' && <section className={classes.bug}>{pkmn.types[1]}</section>}
-              {pkmn.types[1] === 'Ghost' && <section className={classes.ghost}>{pkmn.types[1]}</section>}
-              {pkmn.types[1] === 'Steel' && <section className={classes.steel}>{pkmn.types[1]}</section>}
-              {pkmn.types[1] === 'Dragon' && <section className={classes.dragon}>{pkmn.types[1]}</section>}
-              {pkmn.types[1] === 'Dark' && <section className={classes.dark}>{pkmn.types[1]}</section>}
-              {pkmn.types[1] === 'Fairy' && <section className={classes.fairy}>{pkmn.types[1]}</section>} */}
-
             </section>
 
+            <section className={classes.details}>
+
+              <section>The {pkmn.classification}</section>
+              
+              <section className={classes.maxStats}>
+                <li>Maximum Health: {pkmn.maxHP}</li>
+                <li>Maximum Power: {pkmn.maxCP}</li>
+              </section>
+
+            </section>
           </section>
 
         </div>
@@ -97,6 +63,7 @@ export const PokemonList = () => {
     );
 };
 
+
 export let myStyles = {
   root: {
     width: '100%',
@@ -105,6 +72,10 @@ export let myStyles = {
     boxSizing: 'border-box',
     
   },
+  details:{
+    display: 'none'
+  },
+
   myInput: {
     color: 'black',
   },
@@ -123,26 +94,54 @@ export let myStyles = {
     flexDirection:'column',
     justifyContent:'space-between',
     alignItems:'center',
-    paddingBottom:'5vh',
-    width:'20vw'
+    marginBottom: '2.5vh',
+    height:'27.5vh',
+    textAlign:'center',
+    width:'20vw',
+    '&: section':{
+      width:'15vw',
+      border:'1px solid white'
+    },
+    '&:hover': {
+      height:'32.5vh',
+      alignItems:'center'
+    },
+    '&:hover $details': {
+      display: 'flex',
+      flexDirection:'column',
+      height:'fitContent',
+      gap:'5px'
+    }
   },
 
   pkImage: {
     height: '20vh',
     maxWidth:'20vw'
   },
+
+  nameNumber: {
+    width:'10vw',
+    fontSize:'16px',
+  },
   
   cardBottom:{
-    height:'5vh',
     display:'flex',
     flexDirection: 'column',
-    justifyContent:'space-evenly'
+    justifyContent:'space-evenly',
+    gap:'5px',
+    
   },
 
   types: {
     display: 'flex',
+    alignItems: 'center',
     justifyContent: 'space-evenly',
-    width: '10vw'
+  },
+
+  maxStats:{
+    display:'flex',
+    flexDirection:'column',
+    listStyleType:'none',
   },
   
   Normal : {
